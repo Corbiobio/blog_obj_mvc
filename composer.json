@@ -1,0 +1,15 @@
+{
+    "name": "corbio/blog_obj_mvc",
+    "description": "blog",
+    "autoload": {
+        "psr-4": {
+            "BlogObjMvc\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "corbio"
+        }
+    ],
+    "require": {}
+}
