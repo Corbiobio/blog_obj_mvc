@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -214,7 +215,8 @@ main {
     transition: all .5s ease;
 }
 
-.formLogin form>button:hover, .formLogin form>button:focus {
+.formLogin form>button:hover,
+.formLogin form>button:focus {
     background-color: #052659ff;
     color: white;
     border: 1px solid white;
@@ -365,7 +367,8 @@ main {
     transition: all .5s ease;
 }
 
-.formRegister form>button:hover, .formRegister form>button:focus {
+.formRegister form>button:hover,
+.formRegister form>button:focus {
     background-color: #052659ff;
     color: white;
     border: 1px solid white;
@@ -939,16 +942,49 @@ section.create>div {
     flex: 1;
 }
 
-section.create .list {
-    min-width: 40%;
-    height: 70%;
+/* post style */
+
+.post {
+    min-width: 70%;
+    height: 50%;
     border-radius: 15px;
     background-color: #013a6b;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
 }
 
-section.create .list .top {
+.post input,
+.post textarea {
+    height: 50px;
+    background-color: unset;
+    border: none;
+    color: white;
+    resize: none;
+    width: 100%;
+    border-bottom: 2px solid white;
+}
+
+.post input::placeholder,
+.post textarea::placeholder {
+    color: white;
+}
+
+.post .btn {
+    border: 2px solid white;
+    border-radius: 15px;
+    width: fit-content;
+    padding: 5px 10px;
+}
+
+.post input:focus-visible,
+.post textarea {
+    outline: none;
+}
+
+/* section.create .post .top {
     width: 100%;
     padding: 20px 20px 10px 20px;
 }
@@ -986,20 +1022,20 @@ section.create form button:hover {
     transition: background .5s ease;
 }
 
-section.create .list .top .error {
+section.create .post .top .error {
     color: red;
 }
 
-section.create .list .separateur {
+section.create .post .separateur {
     border-top: 4px solid white;
     width: 100%;
 }
 
-section.create .list .bottom {
+section.create .post .bottom {
     width: 100%;
     padding: 20px 20px 10px 20px;
     flex-grow: 1;
-}
+} */
 
 
 
@@ -1076,7 +1112,7 @@ section.error a {
         margin: 25px;
     }
 
-    section.create .list {
+    section.create .post {
         width: 80%;
     }
 

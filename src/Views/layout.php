@@ -15,7 +15,7 @@
         <nav>
             <a href="/" class="logo">LOGO</a>
             <?php
-            if (!isset($_SESSION["user"]["username"])) {
+            if (!isset($_SESSION["user"]["name"])) {
                 ?>
                 <div class="hoverLink">
                     <a href="/" class="icon"><i class="fas fa-home"></i></a>
@@ -37,13 +37,13 @@
                 <div class="hoverLink">
                     <p class="icon"><i class="fas fa-user"></i></p>
                     <p class="hidden">
-                        <?php echo $_SESSION["user"]["username"]; ?>
+                        <?php echo $_SESSION["user"]["name"]; ?>
                     </p>
                 </div>
 
                 <div class="hoverLink">
                     <a href="/dashboard" class="icon"><i class="fas fa-list-alt"></i></a>
-                    <p class="hidden">Todolist</p>
+                    <p class="hidden">All post</p>
                 </div>
 
                 <div class="hoverLink">

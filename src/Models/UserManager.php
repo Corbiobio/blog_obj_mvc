@@ -2,13 +2,16 @@
 namespace BlogObjMvc\Models;
 
 use BlogObjMvc\Models\User;
+
 /** Class UserManager **/
-class UserManager {
+class UserManager
+{
 
     private $bdd;
 
-    public function __construct() {
-        $this->bdd = new \PDO('mysql:host='.HOST.';dbname=' . DATABASE . ';charset=utf8;' , USER, PASSWORD);
+    public function __construct()
+    {
+        $this->bdd = new \PDO('mysql:host=' . HOST . ';dbname=' . DATABASE . ';charset=utf8;', USER, PASSWORD);
         $this->bdd->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }
 
@@ -17,27 +20,34 @@ class UserManager {
         return $this->bdd;
     }
 
-    public function find($username) {
-        $stmt = $this->bdd->prepare("SELECT * FROM User WHERE username = ?");
-        $stmt->execute(array(
-            $username
-        ));
-        $stmt->setFetchMode(\PDO::FETCH_CLASS,"Todo\Models\User");
+    public function find($name)
+    {
+        $result = $this->bdd->prepare("SELECT * FROM User WHERE name = ?");
+        $result->execute(
+            array(
+                $name
+            )
+        );
+        $result->setFetchMode(\PDO::FETCH_CLASS, "BlogObjMvc\Models\User");
 
-        return $stmt->fetch();
+        return $result->fetch();
     }
 
-    public function all() {
-        $stmt = $this->bdd->query('SELECT * FROM User');
+    public function all()
+    {
+        $result = $this->bdd->query('SELECT * FROM User');
 
-        return $stmt->fetchAll(\PDO::FETCH_CLASS,"Todo\Models\User");
+        return $result->fetchAll(\PDO::FETCH_CLASS, "BlogObjMvc\Models\User");
     }
 
-    public function store($password) {
-        $stmt = $this->bdd->prepare("INSERT INTO User(username, password) VALUES (?, ?)");
-        $stmt->execute(array(
-            $_POST["username"],
-            $password
-        ));
+    public function store($password)
+    {
+        $result = $this->bdd->prepare("INSERT INTO User(name, password) VALUES (?, ?)");
+        $result->execute(
+            array(
+                $_POST["name"],
+                $password
+            )
+        );
     }
 }

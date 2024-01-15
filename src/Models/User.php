@@ -2,33 +2,40 @@
 namespace BlogObjMvc\Models;
 
 /** Class User **/
-class User {
+class User
+{
 
-    private $username;
+    private $name;
     private $password;
     private $id;
 
-    public function getUsername() {
-        return $this->username;
+    public function getName()
+    {
+        return $this->name;
     }
 
-    public function getPassword() {
+    public function getPassword()
+    {
         return $this->password;
     }
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function setUsername(String $username) {
-        $this->username = $username;
+    public function setName(string $name)
+    {
+        $this->name = $name;
     }
 
-    public function setPassword(String $password) {
+    public function setPassword(string $password)
+    {
         $this->password = $password;
     }
 
-    public function setId(Int $id) {
+    public function setId(int $id)
+    {
         $this->id = $id;
     }
 }

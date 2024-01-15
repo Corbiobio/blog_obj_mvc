@@ -17,22 +17,22 @@ class TodoManager
 
     public function find($name, $userId)
     {
-        $stmt = $this->bdd->prepare("SELECT * FROM List WHERE name = ? AND user_id = ?");
-        $stmt->execute(
+        $result = $this->bdd->prepare("SELECT * FROM List WHERE name = ? AND user_id = ?");
+        $result->execute(
             array(
                 $name,
                 $userId
             )
         );
-        $stmt->setFetchMode(\PDO::FETCH_CLASS, "Todo\Models\Todo");
+        $result->setFetchMode(\PDO::FETCH_CLASS, "Todo\Models\Todo");
 
-        return $stmt->fetch();
+        return $result->fetch();
     }
 
     public function store()
     {
-        $stmt = $this->bdd->prepare("INSERT INTO List(name, user_id) VALUES (?, ?)");
-        $stmt->execute(
+        $result = $this->bdd->prepare("INSERT INTO List(name, user_id) VALUES (?, ?)");
+        $result->execute(
             array(
                 $_POST["name"],
                 $_SESSION["user"]["id"]
@@ -42,8 +42,8 @@ class TodoManager
 
     public function update($slug)
     {
-        $stmt = $this->bdd->prepare("UPDATE List SET name = ? WHERE name = ? AND user_id = ?");
-        $stmt->execute(
+        $result = $this->bdd->prepare("UPDATE List SET name = ? WHERE name = ? AND user_id = ?");
+        $result->execute(
             array(
                 $_POST['nameTodo'],
                 $slug,
@@ -55,8 +55,8 @@ class TodoManager
     public function delete($slug)
     {
 
-        $stmt = $this->bdd->prepare("DELETE FROM List WHERE id = ? AND user_id = ?");
-        $stmt->execute(
+        $result = $this->bdd->prepare("DELETE FROM List WHERE id = ? AND user_id = ?");
+        $result->execute(
             array(
                 $_POST["idList"],
                 $_SESSION["user"]["id"]
@@ -66,13 +66,13 @@ class TodoManager
 
     public function getAll()
     {
-        $stmt = $this->bdd->prepare('SELECT * FROM List WHERE user_id = ?');
-        $stmt->execute(
+        $result = $this->bdd->prepare('SELECT * FROM List WHERE user_id = ?');
+        $result->execute(
             array(
                 $_SESSION["user"]["id"]
             )
         );
 
-        return $stmt->fetchAll(\PDO::FETCH_CLASS, "Todo\Models\Todo");
+        return $result->fetchAll(\PDO::FETCH_CLASS, "Todo\Models\Todo");
     }
 }
