@@ -1,6 +1,6 @@
 <?php
 
-namespace Todo;
+namespace BlogObjMvc;
 
 /** Class Validator **/
 class Validator {

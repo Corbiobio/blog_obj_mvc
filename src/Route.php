@@ -1,23 +1,26 @@
 <?php
-namespace Todo;
+namespace BlogObjMvc;
 
-class Route {
+class Route
+{
 
     private $path;
     private $callable;
     private $matches = [];
     private $params = [];
 
-    public function __construct($path, $callable){
+    public function __construct($path, $callable)
+    {
         $this->path = trim($path, '/');
         $this->callable = $callable;
     }
 
-    public function match($url){
+    public function match($url)
+    {
         $url = trim($url, '/');
         $path = preg_replace('#:([\w]+)#', '([^/]+)', $this->path);
         $regex = "#^$path$#i";
-        if(!preg_match($regex, $url, $matches)){
+        if (!preg_match($regex, $url, $matches)) {
             return false;
         }
         array_shift($matches);
@@ -25,10 +28,11 @@ class Route {
         return true;
     }
 
-    public function call() {
-         $rep = explode("@", $this->callable);
-         $controller = "Todo\\Controllers\\".$rep[0];
-         $controller = new $controller();
+    public function call()
+    {
+        $rep = explode("@", $this->callable);
+        $controller = "BlogObjMvc\\Controllers\\" . $rep[0];
+        $controller = new $controller();
 
         return call_user_func_array([$controller, $rep[1]], $this->matches);
     }

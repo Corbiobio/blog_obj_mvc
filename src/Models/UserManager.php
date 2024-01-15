@@ -1,7 +1,7 @@
 <?php
-namespace Todo\Models;
+namespace BlogObjMvc\Models;
 
-use Todo\Models\User;
+use BlogObjMvc\Models\User;
 /** Class UserManager **/
 class UserManager {
 

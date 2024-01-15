@@ -1,9 +1,9 @@
 <?php
 
-namespace Todo\Controllers;
+namespace BlogObjMvc\Controllers;
 
-use Todo\Models\TodoManager;
-use Todo\Validator;
+use BlogObjMvc\Models\TodoManager;
+use BlogObjMvc\Validator;
 
 /** Class UserController **/
 class TodoController {

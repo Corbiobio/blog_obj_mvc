@@ -1,5 +1,5 @@
 <?php
-namespace Todo\Models;
+namespace BlogObjMvc\Models;
 
 /** Class Todo **/
 class Todo {
