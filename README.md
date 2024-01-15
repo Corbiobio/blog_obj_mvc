@@ -1,3 +1,34 @@
+# gestion_blog
+
+## temps total : 12h
+
+- ### Base de donnée : 30min
+  - base de donnée 30min
+ 
+- ### Site : 8h
+  
+    - #### Connection : 2h
+        - login : 1h
+        - logout : 1h
+     
+    - #### Insertion : 1h30
+       - php : 1h30
+
+    - #### Suppression : 1h30
+        - php : 1h30
+          
+    - #### Modification : 2h
+        - ##### afficher la page : 1h
+          - php : 1h
+            
+        - ##### Requete : 1h
+          - php : 1h
+
+- ### Bug/Test : 3h
+
+
+
+
 # Création d'une Todo liste
 
 **Prérequis**: Base PHP, les objets, le modèle MVC, la validation
