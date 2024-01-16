@@ -28,17 +28,37 @@ class BlogController
 
     function createPost()
     {
-
         //rename and move img
-        $img_name = $_FILES["img"]["name"];
         $rd = rand(0, mt_getrandmax());
-        $img_path = "./img/" . $rd . "_" . $img_name;
+        $img_name = $rd . "_" . $_FILES["img"]["name"];
+        $img_path = "./img/" . $img_name;
 
         move_uploaded_file($_FILES["img"]["tmp_name"], $img_path);
 
-        $this->post_manager->add_post();
+        $this->post_manager->add_post($img_name);
 
-        // header("Location: /dashboard/" . $slug);
+        header("Location: /dashboard/");
+    }
+
+    function showAllPost()
+    {
+        $posts = $this->post_manager->get_all_post();
+        require VIEWS . "./Blog/all_post.php";
+    }
+
+    function deletePost($slug)
+    {
+        $result = $this->post_manager->get_one_post($slug);
+
+        //if post exist
+        if ($result) {
+            $this->post_manager->delete_post($slug);
+
+            //delete img
+            unlink("./img/" . $result->getImg());
+        }
+
+        $this->showAllPost();
     }
 }
 

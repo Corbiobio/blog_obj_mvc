@@ -8,12 +8,12 @@ ob_start();
     <div>
         <form action="/dashboard/nouveau" method="post" class="post" enctype=multipart/form-data>
 
-            <input name="title" require class="title" type="text" name="name" value="<?php echo old("name"); ?>"
+            <input name="title" required class="title" type="text" name="name" value="<?php echo old("name"); ?>"
                 placeholder="Post Title">
 
-            <input type="file" name="img">
+            <input type="file" required name="img" accept=".jpg,.png,.gif">
 
-            <textarea name="label" require placeholder="Post Description"></textarea>
+            <textarea class="label" name="label" required placeholder="Post Description"></textarea>
 
             <input type="submit" class="btn">
         </form>

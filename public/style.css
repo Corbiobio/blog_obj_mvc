@@ -444,6 +444,7 @@ section.dashboard .topDashBoard .buttonAdd:hover {
 }
 
 section.dashboard .blockAllList {
+    gap: 40px;
     margin-top: 50px;
     display: flex;
     flex-direction: column;
@@ -954,10 +955,46 @@ section.create>div {
     justify-content: space-between;
     align-items: center;
     padding: 50px;
+    color: white;
+}
+
+.post i {
+    color: white;
+}
+
+.post .container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.post .container div {
+    display: flex;
+    gap: 50px;
+}
+
+.post_multiple {
+    height: fit-content;
+    width: 100%;
+    gap: 30px;
+}
+
+.post_multiple .title {
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.post_multiple .label {
+    text-align: center;
+}
+
+.post img {
+    max-width: 70%;
 }
 
 .post input,
-.post textarea {
+.post .title,
+.post .label {
     height: 50px;
     background-color: unset;
     border: none;
@@ -968,7 +1005,7 @@ section.create>div {
 }
 
 .post input::placeholder,
-.post textarea::placeholder {
+.post .label::placeholder {
     color: white;
 }
 
@@ -980,67 +1017,9 @@ section.create>div {
 }
 
 .post input:focus-visible,
-.post textarea {
+.post .label {
     outline: none;
 }
-
-/* section.create .post .top {
-    width: 100%;
-    padding: 20px 20px 10px 20px;
-}
-
-section.create form {
-    display: flex;
-    flex-direction: row;
-}
-
-section.create form input {
-    height: 30px;
-    background-color: transparent;
-    border: none;
-    color: white;
-    flex: 1;
-    margin-right: 10px;
-}
-
-section.create form input::placeholder {
-    color: white;
-}
-
-section.create form button {
-    padding: 10px 10px;
-    background-color: transparent;
-    border: none;
-    color: white;
-    border-radius: 100%;
-    cursor: pointer;
-    transition: background .5s ease;
-}
-
-section.create form button:hover {
-    background-color: #052659ff;
-    transition: background .5s ease;
-}
-
-section.create .post .top .error {
-    color: red;
-}
-
-section.create .post .separateur {
-    border-top: 4px solid white;
-    width: 100%;
-}
-
-section.create .post .bottom {
-    width: 100%;
-    padding: 20px 20px 10px 20px;
-    flex-grow: 1;
-} */
-
-
-
-
-
 
 
 /* CSS page 404 */
