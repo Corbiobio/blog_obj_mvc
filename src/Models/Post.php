@@ -37,7 +37,7 @@ class Post
 
     public function getTitle()
     {
-        return $this->title;
+        return trim($this->title);
     }
     public function setLabel($label)
     {
@@ -46,7 +46,7 @@ class Post
 
     public function getLabel()
     {
-        return $this->label;
+        return trim($this->label);
     }
     public function setImg($img)
     {

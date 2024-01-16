@@ -15,13 +15,20 @@
     <header>
         <nav>
             <a href="/" class="logo">LOGO</a>
+            <div class="hoverLink">
+                <a href="/" class="icon"><i class="fas fa-home"></i></a>
+                <p class="hidden">Accueil</p>
+            </div>
+
+            <div class="hoverLink">
+                <a href="/dashboard" class="icon"><i class="fas fa-list-alt"></i></a>
+                <p class="hidden">All post</p>
+            </div>
+
+
             <?php
             if (!isset($_SESSION["user"]["name"])) {
                 ?>
-                <div class="hoverLink">
-                    <a href="/" class="icon"><i class="fas fa-home"></i></a>
-                    <p class="hidden">Accueil</p>
-                </div>
 
                 <div class="hoverLink">
                     <a href="/login" class="icon"><i class="fas fa-user-tie"></i></a>
@@ -30,9 +37,10 @@
                 <?php
             } else {
                 ?>
+
                 <div class="hoverLink">
-                    <a href="/" class="icon"><i class="fas fa-home"></i></a>
-                    <p class="hidden">Accueil</p>
+                    <a href="/dashboard/nouveau" class="icon"><i class="fas fa-plus"></i></a>
+                    <p class="hidden">New</p>
                 </div>
 
                 <div class="hoverLink">
@@ -40,16 +48,6 @@
                     <p class="hidden">
                         <?php echo $_SESSION["user"]["name"]; ?>
                     </p>
-                </div>
-
-                <div class="hoverLink">
-                    <a href="/dashboard" class="icon"><i class="fas fa-list-alt"></i></a>
-                    <p class="hidden">All post</p>
-                </div>
-
-                <div class="hoverLink">
-                    <a href="/dashboard/nouveau" class="icon"><i class="fas fa-plus"></i></a>
-                    <p class="hidden">New</p>
                 </div>
 
                 <div class="hoverLink">

@@ -24,8 +24,8 @@ class PostManager
         $result->execute([
             uniqid(),
             $_SESSION["user"]["id"],
-            $_POST["title"],
-            $_POST["label"],
+            htmlspecialchars($_POST["title"]),
+            htmlspecialchars($_POST["label"]),
             $img_name
         ]);
     }
@@ -55,5 +55,12 @@ class PostManager
         $sql = "DELETE FROM post WHERE id = ?";
         $result = $this->bdd->prepare($sql);
         $result->execute([$post_id]);
+    }
+
+    function update_post($post)
+    {
+        $sql = "UPDATE post SET title = ?, label = ?, img = ? WHERE id = ?";
+        $result = $this->bdd->prepare($sql);
+        $result->execute([$post->getTitle(), $post->getLabel(), $post->getImg(), $post->getId()]);
     }
 }
