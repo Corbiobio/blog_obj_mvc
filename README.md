@@ -1,15 +1,15 @@
 # gestion_blog
 
-## temps total : 12h
+## temps total : 9h30
 
 - ### Base de donnée : 30min
   - base de donnée 30min
  
-- ### Site : 8h
+- ### Site : 6h
   
-    - #### Connection : 2h
-        - login : 1h
-        - logout : 1h
+    - #### Connection : 1h
+        - login : 30min
+        - logout : 30min
      
     - #### Insertion : 1h30
        - php : 1h30
@@ -25,6 +25,36 @@
           - php : 1h
 
 - ### Bug/Test : 3h
+
+
+BlogObjMvc
+    public/
+        index.php
+        style.css
+        img/
+    src/
+        Controllers/
+            UserController.php
+            BlogController.php
+        Models/
+            User.php
+            Post.php
+            UserManager.php
+            PostManager.php
+        Views/
+            404.php
+            layout.php
+            Auth/
+                login.php
+                register.php
+            Post/
+                index.php
+                show.php
+                create.php
+        Router.php
+        Route.php
+        Helper.php
+        Validator.php
 
 
 
