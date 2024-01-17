@@ -26,7 +26,8 @@
 
 - ### Bug/Test : 3h
 
-
+#Structure des fichiers :
+```
 BlogObjMvc
     public/
         index.php
@@ -55,7 +56,7 @@ BlogObjMvc
         Route.php
         Helper.php
         Validator.php
-
+```
 
 
 
