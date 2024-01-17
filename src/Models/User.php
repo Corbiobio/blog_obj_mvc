@@ -5,36 +5,36 @@ namespace BlogObjMvc\Models;
 class User
 {
 
-    private $name;
-    private $password;
-    private $id;
+    private string $name;
+    private string $password;
+    private int $id;
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->password;
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-    public function setPassword(string $password)
+    public function setPassword(string $password): void
     {
         $this->password = $password;
     }
 
-    public function setId(int $id)
+    public function setId(int $id): void
     {
         $this->id = $id;
     }

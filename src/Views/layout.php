@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="super blog">
+    <meta name="author" content="Corbio">
     <title>— Blog —</title>
-    <!-- <script src="https://kit.fontawesome.com/c1d0ab37d6.js" crossorigin="anonymous"></script> -->
     <script src="https://kit.fontawesome.com/23eae9f3ec.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/style.css">
 </head>
@@ -28,6 +28,7 @@
 
             <?php
             if (!isset($_SESSION["user"]["name"])) {
+                //display login in nav if user connect
                 ?>
 
                 <div class="hoverLink">

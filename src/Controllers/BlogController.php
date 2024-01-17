@@ -7,27 +7,27 @@ use BlogObjMvc\Models\PostManager;
 class BlogController
 {
 
-    private $post_manager;
+    private PostManager $post_manager;
 
     function __construct()
     {
         $this->post_manager = new PostManager();
     }
 
-    function verif_if_user_connect()
+    function verif_if_user_connect(): void
     {
         if (!isset($_SESSION["user"]["name"])) {
             header("Location: /login");
         }
     }
 
-    function index()
+    function index(): void
     {
         //show view home
         require VIEWS . "./Blog/home.php";
     }
 
-    function showCreate()
+    function showCreate(): void
     {
         $this->verif_if_user_connect();
 
@@ -35,7 +35,7 @@ class BlogController
         require VIEWS . "./Blog/create.php";
     }
 
-    function createPost()
+    function createPost(): void
     {
         $this->verif_if_user_connect();
 
@@ -51,13 +51,13 @@ class BlogController
         header("Location: /dashboard/");
     }
 
-    function showAllPost()
+    function showAllPost(): void
     {
         $posts = $this->post_manager->get_all_post();
         require VIEWS . "./Blog/all_post.php";
     }
 
-    function showUpdate($slug)
+    function showUpdate($slug): void
     {
         $this->verif_if_user_connect();
 
@@ -65,7 +65,7 @@ class BlogController
         require VIEWS . "./Blog/modify.php";
     }
 
-    function deletePost($slug)
+    function deletePost($slug): void
     {
         $this->verif_if_user_connect();
 
@@ -82,7 +82,7 @@ class BlogController
         $this->showAllPost();
     }
 
-    function updatePost($slug)
+    function updatePost($slug): void
     {
         $this->verif_if_user_connect();
 

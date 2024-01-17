@@ -55,7 +55,9 @@ ob_start();
                     </div>
 
                     <time datetime="<?= $post->getDate() ?>">
-                        <?= $post->getDate() ?>
+                        <?=
+                            date("d/m/Y", strtotime($post->getDate()));
+                        ?>
                     </time>
                 </div>
             </div>

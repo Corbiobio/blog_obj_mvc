@@ -8,33 +8,33 @@ use BlogObjMvc\Validator;
 /** Class UserController **/
 class UserController
 {
-    private $manager;
-    private $validator;
+    private UserManager $user_manager;
+    private Validator $validator;
 
     public function __construct()
     {
-        $this->manager = new UserManager();
+        $this->user_manager = new UserManager();
         $this->validator = new Validator();
     }
 
-    public function showLogin()
+    public function showLogin(): void
     {
         require VIEWS . 'Auth/login.php';
     }
 
-    public function showRegister()
+    public function showRegister(): void
     {
         require VIEWS . 'Auth/register.php';
     }
 
-    public function logout()
+    public function logout(): void
     {
         session_start();
         session_destroy();
         header('Location: /login/');
     }
 
-    public function register()
+    public function register(): void
     {
         $this->validator->validate([
             "name" => ["required", "min:2", "alphaNum"],
@@ -44,14 +44,14 @@ class UserController
         $_SESSION['old'] = $_POST;
 
         if (!$this->validator->errors()) {
-            $res = $this->manager->find($_POST["name"]);
+            $res = $this->user_manager->find($_POST["name"]);
 
             if (empty($res)) {
                 $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-                $this->manager->store($password);
+                $this->user_manager->store($password);
 
                 $_SESSION["user"] = [
-                    "id" => $this->manager->getBdd()->lastInsertId(),
+                    "id" => $this->user_manager->getBdd()->lastInsertId(),
                     "name" => $_POST["name"]
                 ];
                 header("Location: /");
@@ -64,7 +64,7 @@ class UserController
         }
     }
 
-    public function login()
+    public function login(): void
     {
         $this->validator->validate([
             "name" => ["required", "min:2", "max:9", "alphaNum"],
@@ -74,7 +74,7 @@ class UserController
         $_SESSION['old'] = $_POST;
 
         if (!$this->validator->errors()) {
-            $res = $this->manager->find($_POST["name"]);
+            $res = $this->user_manager->find($_POST["name"]);
 
             if ($res && password_verify($_POST['password'], $res->getPassword())) {
                 $_SESSION["user"] = [

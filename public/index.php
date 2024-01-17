@@ -29,15 +29,4 @@ $router->post('/register/', "UserController@register");
 $router->post('/dashboard/nouveau/', "BlogController@createPost");
 $router->post('/dashboard/:post/update', "BlogController@updatePost");
 
-
-
-
-
-// $router->post('/dashboard/task/nouveau', "TaskController@store");
-// $router->post('/dashboard/:todo/task/:task/delete/', "TaskController@delete");
-// $router->post('/dashboard/:todo/task/:task', "TaskController@update");
-// $router->post('/dashboard/:todo/task/:task/check', "TaskController@check");
-// $router->post('/dashboard/:todo/', "TodoController@update");
-// $router->post('/dashboard/:todo/delete/', "TodoController@delete");
-
 $router->run();

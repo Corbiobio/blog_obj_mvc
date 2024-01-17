@@ -3,20 +3,21 @@
 namespace BlogObjMvc\Models;
 
 use BlogObjMvc\Models\Post;
+use PDO;
 
 class PostManager
 {
-    private $post;
-    private $bdd;
+    private Post $post;
+    private PDO $bdd;
 
     function __construct()
     {
         $this->post = new Post();
-        $this->bdd = new \PDO('mysql:host=' . HOST . ';dbname=' . DATABASE . ';charset=utf8;', USER, PASSWORD);
-        $this->bdd->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $this->bdd = new PDO('mysql:host=' . HOST . ';dbname=' . DATABASE . ';charset=utf8;', USER, PASSWORD);
+        $this->bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    function add_post($img_name)
+    function add_post(string $img_name)
     {
         $sql = "INSERT INTO `post` (`id`, `user_id`, `title`, `label`, `img`, `date`) VALUES (?, ?, ?, ?, ?,NOW())";
 
@@ -30,34 +31,35 @@ class PostManager
         ]);
     }
 
-    function get_all_post()
+    function get_all_post(): array
     {
         $sql = "SELECT * FROM `post`";
         $result = $this->bdd->prepare($sql);
         $result->execute();
 
         //put data in class
-        return $result->fetchAll(\PDO::FETCH_CLASS, "BlogObjMvc\Models\Post");
+        return $result->fetchAll(PDO::FETCH_CLASS, "BlogObjMvc\Models\Post");
     }
 
-    function get_one_post($post_id)
+    function get_one_post(string $post_id): Post
     {
         $sql = "SELECT * FROM post WHERE id = ?";
         $result = $this->bdd->prepare($sql);
         $result->execute([$post_id]);
 
-        $result->setFetchMode(\PDO::FETCH_CLASS, "BlogObjMvc\Models\Post");
-        return $result->fetch(\PDO::FETCH_CLASS);
+        //put data in class
+        $result->setFetchMode(PDO::FETCH_CLASS, "BlogObjMvc\Models\Post");
+        return $result->fetch(PDO::FETCH_CLASS);
     }
 
-    function delete_post($post_id)
+    function delete_post(string $post_id): void
     {
         $sql = "DELETE FROM post WHERE id = ?";
         $result = $this->bdd->prepare($sql);
         $result->execute([$post_id]);
     }
 
-    function update_post($post)
+    function update_post(Post $post): void
     {
         $sql = "UPDATE post SET title = ?, label = ?, img = ? WHERE id = ?";
         $result = $this->bdd->prepare($sql);
