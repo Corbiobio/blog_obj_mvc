@@ -60,26 +60,35 @@ class BlogController
     function showUpdate($slug): void
     {
         $this->verif_if_user_connect();
-
         $post = $this->post_manager->get_one_post($slug);
-        require VIEWS . "./Blog/modify.php";
+
+        //if user id same as post user id
+        if ($_SESSION["user"]["id"] == $post->getUser_id()) {
+            require VIEWS . "./Blog/modify.php";
+        } else {
+            header("Location: /dashboard/");
+        }
     }
 
     function deletePost($slug): void
     {
         $this->verif_if_user_connect();
 
-        $result = $this->post_manager->get_one_post($slug);
+        $post = $this->post_manager->get_one_post($slug);
 
-        //if post exist
-        if ($result) {
-            $this->post_manager->delete_post($slug);
+        //if user id same as post user id
+        if ($_SESSION["user"]["id"] == $post->getUser_id()) {
 
-            //delete img
-            unlink("./img/" . $result->getImg());
+            //if post exist
+            if ($post) {
+                $this->post_manager->delete_post($slug);
+
+                //delete img
+                unlink("./img/" . $post->getImg());
+            }
         }
 
-        $this->showAllPost();
+        header("Location: /dashboard/");
     }
 
     function updatePost($slug): void
@@ -95,7 +104,6 @@ class BlogController
             $result->setLabel($_POST["label"]);
 
             if ($_FILES["img"]["error"] == 0) {
-
 
                 //delete previews img
                 unlink("./img/" . $result->getImg());
@@ -113,7 +121,7 @@ class BlogController
             $this->post_manager->update_post($result);
         }
 
-        $this->showAllPost();
+        header("Location: /dashboard/");
     }
 }
 
