@@ -1036,6 +1036,10 @@ section.create>div {
     margin: 20px 0;
 }
 
+.post .not_own_post {
+    cursor: not-allowed;
+}
+
 
 
 /* CSS page 404 */

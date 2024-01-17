@@ -32,7 +32,7 @@ class Post
 
     public function setTitle($title)
     {
-        $this->title = $title;
+        $this->title = htmlspecialchars($title);
     }
 
     public function getTitle()
@@ -41,7 +41,7 @@ class Post
     }
     public function setLabel($label)
     {
-        $this->label = $label;
+        $this->label = htmlspecialchars($label);
     }
 
     public function getLabel()

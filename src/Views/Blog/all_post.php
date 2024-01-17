@@ -30,9 +30,28 @@ ob_start();
 
                 <div class="container">
                     <div>
-                        <a class="delete" href="/dashboard/<?= $post->getid(); ?>/delete"><i
-                                class="fa-solid fa-trash"></i></a>
-                        <a href="/dashboard/<?= $post->getid(); ?>/update"><i class="fa-solid fa-pen"></i></a>
+                        <?php
+                        //if connect and same id as post 
+                        //display modif and delete
+                        if (isset($_SESSION["user"]["id"]) && $post->getUser_id() == $_SESSION["user"]["id"]) {
+                            ?>
+
+                            <a class="delete" href="/dashboard/<?= $post->getid(); ?>/delete"><i
+                                    class="fa-solid fa-trash"></i></a>
+                            <a class="update" href="/dashboard/<?= $post->getid(); ?>/update"><i
+                                    class="fa-solid fa-pen"></i></a>
+
+                            <?php
+                        } else {
+                            ?>
+
+                            <p class="delete not_own_post"><i class="fa-solid fa-trash"></i></p>
+                            <p class="update not_own_post"><i class="fa-solid fa-pen"></i></p>
+
+                            <?php
+                        }
+                        ?>
+
                     </div>
 
                     <time datetime="<?= $post->getDate() ?>">

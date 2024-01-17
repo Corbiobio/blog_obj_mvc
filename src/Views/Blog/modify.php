@@ -13,7 +13,7 @@ ob_start();
 
             <div class="edit_file_container">
                 <input type="file" name="img" accept=".jpg,.png,.gif">
-                <p>Previews img :</p>
+                <p>Previous img :</p>
                 <img src="/img/<?= $post->getImg(); ?>" alt="img">
             </div>
 

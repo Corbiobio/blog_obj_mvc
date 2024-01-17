@@ -61,6 +61,11 @@ class PostManager
     {
         $sql = "UPDATE post SET title = ?, label = ?, img = ? WHERE id = ?";
         $result = $this->bdd->prepare($sql);
-        $result->execute([$post->getTitle(), $post->getLabel(), $post->getImg(), $post->getId()]);
+        $result->execute([
+            $post->getTitle(),
+            $post->getLabel(),
+            $post->getImg(),
+            $post->getId()
+        ]);
     }
 }
