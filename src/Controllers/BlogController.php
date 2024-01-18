@@ -3,15 +3,18 @@
 namespace BlogObjMvc\Controllers;
 
 use BlogObjMvc\Models\PostManager;
+use BlogObjMvc\Validator;
 
 class BlogController
 {
 
     private PostManager $post_manager;
+    private Validator $validator;
 
     function __construct()
     {
         $this->post_manager = new PostManager();
+        $this->validator = new Validator();
     }
 
     function verif_if_user_connect(): void
@@ -39,16 +42,23 @@ class BlogController
     {
         $this->verif_if_user_connect();
 
-        //rename and move img
-        $rd = rand(0, mt_getrandmax());
-        $img_name = $rd . "_" . $_FILES["img"]["name"];
-        $img_path = "./img/" . $img_name;
+        $this->validator->validate(["title" => ["alphaNumDash"]]);
+        $_SESSION["old"] = $_POST;
 
-        move_uploaded_file($_FILES["img"]["tmp_name"], $img_path);
+        if (!$this->validator->errors()) {
 
-        $this->post_manager->add_post($img_name);
+            //rename and move img
+            $rd = rand(0, mt_getrandmax());
+            $img_name = $rd . "_" . $_FILES["img"]["name"];
+            $img_path = "./img/" . $img_name;
 
-        header("Location: /dashboard/");
+            move_uploaded_file($_FILES["img"]["tmp_name"], $img_path);
+
+            $this->post_manager->add_post($img_name);
+            header("Location: /dashboard/");
+        } else {
+            $this->showCreate();
+        }
     }
 
     function showAllPost(): void
@@ -64,7 +74,7 @@ class BlogController
 
         //if user id same as post user id
         if ($_SESSION["user"]["id"] == $post->getUser_id()) {
-            require VIEWS . "./Blog/modify.php";
+            require VIEWS . "./Blog/update.php";
         } else {
             header("Location: /dashboard/");
         }

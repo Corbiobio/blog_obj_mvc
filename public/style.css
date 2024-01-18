@@ -931,6 +931,7 @@ section.create {
     height: 100%;
     display: flex;
     flex-direction: column;
+    gap: 50px;
 }
 
 section.create h1 {
@@ -973,6 +974,11 @@ section.create>div {
 .post .container div {
     display: flex;
     gap: 50px;
+}
+
+.post .error {
+    color: red;
+    font-size: 10px;
 }
 
 .post_multiple {

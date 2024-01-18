@@ -3,10 +3,11 @@ ob_start();
 ?>
 
 <section class="create">
-    <h1><i class="fas fa-list-alt"></i> Création d'un post :</h1>
+    <h1><i class="fas fa-list-alt"></i> Modifier votre post :</h1>
 
     <div>
-        <form action="/dashboard/<?= $post->getId(); ?>/update" method="post" class="post" enctype=multipart/form-data>
+        <form action="/dashboard/<?= $post->getId(); ?>/update" method="post" class="post  post_update"
+            enctype=multipart/form-data>
 
             <input value="<?= $post->getTitle(); ?>" name="title" required class="title" type="text" name="name"
                 placeholder="Post Title">
