@@ -3,30 +3,29 @@
 ## temps total : 9h30
 
 - ### Base de donnée : 30min
-  - base de donnée 30min
+  - mise en place  30min
  
 - ### Site : 6h
   
     - #### Connection : 1h
-        - login : 30min
-        - logout : 30min
+        - html login and logout : 30min
+        - request login and logout : 30min
      
     - #### Insertion : 1h30
-       - php : 1h30
+       - html : 30min
+       - request : 1h
 
     - #### Suppression : 1h30
-        - php : 1h30
+       - html : 30min
+       - request : 1h
           
     - #### Modification : 2h
-        - ##### afficher la page : 1h
-          - php : 1h
-            
-        - ##### Requete : 1h
-          - php : 1h
+       - html : 1h
+       - request : 1h
 
 - ### Bug/Test : 3h
 
-#Structure des fichiers :
+# Structure des fichiers :
 ```
 BlogObjMvc
     public/
